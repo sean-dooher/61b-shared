@@ -180,11 +180,12 @@ class Model implements Iterable<Model.Sq> {
         // FIXME: Initialize _board to contain nulls and clear all objects from
         //        _allSquares.
 
-        // FIXME: Initialize _allSuccSquares so that _allSuccSquares[x][y][dir]
-        //        is a list of all the Places on the board that are a queen
-        //        move in direction DIR from (x, y) and _allSuccSquares[x][y][0]
-        //        is a list of all Places that are one queen move from in
-        //        direction from (x, y).
+        // FIXME: Initialize _allSuccessors so that
+        //        allSuccessorSquares[x][y][dir] is a list of all the Places
+        //        on the board that are a queen move in direction DIR
+        //        from (x, y) and _allSuccessors[x][y][0] is a list of all
+        //        Places that are one queen move from in any direction from
+        //        (x, y).
     }
 
     /** Remove all connections and non-fixed sequence numbers. */
