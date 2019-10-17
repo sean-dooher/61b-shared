@@ -9,6 +9,10 @@
 code=0
 rm -rf ERR.txt
 
+if [[ "$OSTYPE" != "msys" ]]; then
+    ULIMIT="ulimit -t 5; ulimit -f 100"
+fi
+
 for f in "$@"; do
     echo -n "$(basename $(dirname $f))/$(basename $f): ";
     if [ -f "${f%.in}.conf" ]; then
@@ -16,7 +20,7 @@ for f in "$@"; do
     else
         config="$(dirname "$f")/default.conf"
     fi
-    if (ulimit -t 5; ulimit -f 100; 
+    if (eval $ULIMIT;
         java -ea enigma.Main  "$config" "$f" > /dev/null 2> ERR.txt); then
 	code=1; echo "ERROR (did not report error; exit code was 0)";
     else
